@@ -4,8 +4,7 @@ import axios from "axios";
 
 class App extends React.Component {
  state = {
-   login: [],
-   user: "",
+   user: [],
    img: ""
  }
 
@@ -13,10 +12,10 @@ class App extends React.Component {
    console.log("componentDidMount Running");
 
    axios
-   .get("https://api.github.com/users")
+   .get("https://api.github.com/users/shelbie")
    .then(res => {
      console.log(res);
-    this.setState({ login: res.data.message })
+    this.setState({ user: res.data })
    })
    .catch(err => console.log(err));
  }
@@ -29,11 +28,11 @@ class App extends React.Component {
 fetchUser = e => {
   e.preventDefault();
   axios
-  .get(`https://api.github.com/users`)
-  .then(res => this.setState({...this.state, login: res.data.message }))
+  .get(`https://api.github.com/users/shelbie`)
+  .then(res => this.setState({...this.state, user: res.data }))
   .catch(err => console.log(err))
 }
-
+// followers_url following_url html_url url
 render(){
   console.log("rendering");
   return(
@@ -41,26 +40,12 @@ render(){
       <h1>
       Welcome User!
       </h1>
-     
 <div className="card">
 <div className="user">
-          {this.state.login.map(user => (
-            <h1 key={user}></h1>
-          ))}
+  <img key={img} src={img.avatur_url} />
+         
         </div>
 </div>
-  {/* <img src={image url of user} /> */}
-  {/* <div class="card-info">
-    <h3 class="name">{users name}</h3>
-    <p class="username">{users user name}</p>
-    <p>Location: {users location}</p>
-    <p>Profile:  
-      <a href={address to users github page}>{address to users github page}</a>
-    </p>
-    <p>Followers: {users followers count}</p>
-    <p>Following: {users following count}</p>
-    <p>Bio: {users bio}</p>
-  </div> */}
 </div>
 
   )
