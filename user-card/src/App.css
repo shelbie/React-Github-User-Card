@@ -36,3 +36,42 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  margin: 5%;
+  /* border: solid green; */
+}
+
+.card {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: lightgrey;
+  padding: 2%;
+ /* margin: 10%;  */
+  width: 40%;
+  border-radius: 3%;
+  /* border: solid purple; */
+  flex-wrap: wrap;
+}
+
+.card img {
+  /* border: solid yellow; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  
+  width: 50%;
+  height: 50%;
+}
+
+.info {
+  /* border: solid red; */
+  display: block;
+  width: 90%;
+
+}
+
+.followersp {
+  font-weight: bold;
+}

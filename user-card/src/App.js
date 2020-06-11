@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
 import axios from "axios";
+import Card from "./components/Card";
+
 
 class App extends React.Component {
- state = {
-   user: [],
-   img: ""
- }
+  state = {
+    user: []
+  }
 
  componentDidMount() {
    console.log("componentDidMount Running");
@@ -20,10 +21,10 @@ class App extends React.Component {
    .catch(err => console.log(err));
  }
 
- handleChanges = e => {
-   console.log(e.target.name, e.target.value);
-   this.setState({ ...this.state, })
- }
+//  handleChanges = e => {
+//    console.log(e.target.name, e.target.value);
+//    this.setState({ ...this.state, })
+//  }
 
 fetchUser = e => {
   e.preventDefault();
@@ -32,25 +33,26 @@ fetchUser = e => {
   .then(res => this.setState({...this.state, user: res.data }))
   .catch(err => console.log(err))
 }
-// followers_url following_url html_url url
+
 render(){
   console.log("rendering");
   return(
-    <div>
-      <h1>
-      Welcome User!
-      </h1>
-<div className="card">
-<div className="user">
-  <img key={img} src={img.avatur_url} />
-         
-        </div>
-</div>
-</div>
+ <div>
+  <Card
 
-  )
+            img={this.state.user.avatar_url}
+            name={this.state.user.name}
+            location={this.state.user.location}
+            address={this.state.user.html_url}
+            followers={this.state.user.followers}
+            following={this.state.user.following}
+            bio={this.state.user.bio}
+
+          />
+
+</div>
+  )}
 }
 
-}
 
 export default App;
